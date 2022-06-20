@@ -1,0 +1,32 @@
+nav {
+  background: #24292f;
+  box-shadow: 0 3px 6px rgba(140, 149, 159, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  max-width: 100%;
+}
+.nav--searchInput input {
+  padding: 10px 10px;
+  width: 250px;
+  margin-right: 20px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #d0d7de;
+  background-color: #0d1117;
+  caret-color: white;
+  color: white;
+  letter-spacing: 0.05em;
+}
+.search--button {
+  width: 100px;
+  padding: 10px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #0969da;
+  border: 1px solid #0969da;
+  color: white;
+  margin-left: 10px;
+}
