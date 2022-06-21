@@ -20,8 +20,6 @@
   flex-direction: row;
   gap: 20px;
 }
-.user--image {
-}
 .user--image img {
   height: 50px;
   width: 50px;

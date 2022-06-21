@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "../../components";
 import { useNavigate } from "react-router";
 import "./home.css";
 import ReactPaginate from "react-paginate";
@@ -81,10 +80,10 @@ const Index = () => {
           nextLabel={"Next"}
           pageCount={pageCount}
           onPageChange={changePage}
-          containerClassName = {'paginationBttns'}
-          previousLinkClassName = {'previosBttn'}
-          nextLinkClassName = {'nextBttn'}
-          activeClassName = {'paginationActive'}
+          containerClassName={"paginationBttns"}
+          previousLinkClassName={"previosBttn"}
+          nextLinkClassName={"nextBttn"}
+          activeClassName={"paginationActive"}
         />
       </>
     </div>
