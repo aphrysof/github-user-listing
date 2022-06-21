@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import user from "../../assets/user1.jpg";
+
 import "./card.css";
 
 const Index = () => {
@@ -8,10 +8,8 @@ const Index = () => {
   const [userDetails, setUserDetails] = useState([]);
 
   //fetching user details from the api
-  const fetchUserDetails = async (id) => {
-    const res = await fetch(" https://api.github.com/users", {
-      headers: { "Content-Type": "application/vnd.github.v3+json" },
-    });
+  const fetchUserDetails = async () => {
+    const res = await fetch(`https://api.github.com/users`);
     const data = await res.json();
     console.log(data);
     setUserDetails(data);
@@ -28,8 +26,11 @@ const Index = () => {
     <>
       {userDetails &&
         userDetails.map((userDetail) => (
-          <div className="card--container">
-            <div className="card--details" onClick={() => navigate("profile")}>
+          <div className="card--container" key={userDetail.id}>
+            <div
+              className="card--details"
+              onClick={() => navigate(`/profile/${userDetail.id}`)}
+            >
               <div className="avatar--section">
                 <div className="user--image">
                   <img src={userDetail.avatar_url} alt="userimage" />
@@ -40,7 +41,6 @@ const Index = () => {
                       userDetail.login.slice(1)}
                   </h5>
                   <p>@{userDetail.login}</p>
-                  <p>followers: {userDetail?.followers_url.length}</p>
                 </div>
               </div>
               <div className="user--bio">

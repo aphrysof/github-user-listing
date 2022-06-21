@@ -1,17 +1,74 @@
-.bottom--nav {
-  background-color: purple;
+section {
+  max-width: 100%;
+  background: #0d1117;
 }
-.bottom--nav ul {
-  padding: 0;
-  margin: 0;
-  text-align: center;
+.wrapper {
+  width: 100%;
+  position: relative;
 }
-ul > a {
-    text-decoration: none;
-    color: white;
+.sidebar--wrapper {
+  width: 350px;
+  background-color: #0d1117;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-ul a > li {
-  display: inline-block;
-  padding: 15px 20px;
+.avatar--image {
+  position: relative;
+  bottom: 20px;
+}
+
+.avatar--image img {
+  height: 260px;
+  width: 260px;
+  border-radius: 50%;
+}
+.user--section{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.userdetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.userdetails p {
+  color: #8b949e;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+}
+.user--followers {
+  color: #8b949e;
   cursor: pointer;
 }
+.user--follower {
+  color: #8b949e;
+  cursor: pointer;
+}
+.content--wrapper {
+  margin-left: 350px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.people--div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom--section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #8b949e;
+}
+

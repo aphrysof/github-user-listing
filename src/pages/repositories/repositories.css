@@ -1,0 +1,9 @@
+.card--wrapper {
+  max-width: 100%;
+  padding: 10px 30px;
+}
+.card {
+  width: 650px;
+  border: 1px solid black;
+  margin: 20px auto;
+}
