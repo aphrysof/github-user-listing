@@ -2,3 +2,63 @@
   max-width: 100%;
   display: grid;
 }
+.card--container {
+  max-width: 800px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 5px;
+  margin: 30px auto;
+  cursor: pointer;
+  border: 1px solid #30363d;
+}
+.card--details {
+  margin: 10px 20px 20px 20px;
+}
+.avatar--section {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.user--image {
+}
+.user--image img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+}
+.user--details {
+  display: block;
+  align-self: center;
+}
+.user--details h5 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: white;
+}
+.user--details p {
+  color: white;
+}
+.user--bio {
+  margin: 10px 0;
+}
+.paginationBttns {
+  height: 40%;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #0969da;
+  color: white;
+  cursor: pointer;
+}
+.paginationActive a {
+  color: white;
+  background-color: #0969da;
+}

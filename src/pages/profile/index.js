@@ -10,17 +10,17 @@ import { BottomNav } from "../../components";
 
 const Index = () => {
   // useParams always returns an object
-  const { id } = useParams();
+  const { login } = useParams();
   const [user, setUser] = useState([]);
 
   useEffect(() => {
     const fetchUserByUsername = async () => {
-      const res = await fetch(`https://api.github.com/users/${id}`);
+      const res = await fetch(`https://api.github.com/users/${login}`);
       const data = await res.json();
       setUser(data);
     };
     fetchUserByUsername();
-  }, [id]);
+  }, [login]);
   return (
     <section>
       <BottomNav />

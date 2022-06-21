@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./overview.css";
 import { useParams } from "react-router";
-import {
-  RepoIcon,
-  StarIcon,
-  RepoForkedIcon,
-} from "@primer/octicons-react";
+import { RepoIcon, StarIcon, RepoForkedIcon } from "@primer/octicons-react";
 
 const Index = () => {
-  const { id } = useParams();
+  const { login } = useParams();
   const [userRepos, setUserRepos] = useState([]);
 
   useEffect(() => {
     const fetchUserByUsername = async () => {
-      const res = await fetch(`https://api.github.com/users/${id}/repos`);
+      const res = await fetch(`https://api.github.com/users/${login}/repos`);
       const data = await res.json();
       console.log(data);
       setUserRepos(data);
     };
     fetchUserByUsername();
-  }, [id]);
+  }, [login]);
 
   return (
     <>
@@ -32,7 +28,9 @@ const Index = () => {
                 <span>{userRepo.name}</span>
               </div>
               <div className="repo--details">
-                <p>{userRepo?.description}</p>
+                <a href={userRepo.html_url}>
+                  {userRepo?.description}
+                </a>
               </div>
               <div className="repo--footer">
                 <p>{userRepo?.language}</p>
