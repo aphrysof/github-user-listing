@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState} from "react";
 import axios from "axios";
 
 const SearchContext = createContext({
@@ -7,22 +7,23 @@ const SearchContext = createContext({
 });
 
 const SearchProvider = ({ children }) => {
-  //our state for search inputs
-  const [searchInputs, setSearchInputs] = useState([]);
-  //our state for storing the filtered user
+  //our state for search values
+  const [searchInputs, setSearchInputs] = useState('');
+
+  // create a state to hold the value of the search
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   //creating a function that will handlesearch
 
   const handleSearch = (value) => {
-    if (searchInputs !== '') {
-      const filteredData = axios
+    if (value && value.length > 1) {
+      axios
         .get(`https://api.github.com/search/users?q=${value}`)
         .then((res) => {
-          setSearchInputs(res.data.items);
-          console.log(res.data.items)
-        });
-      setFilteredUsers(filteredData);
+              setFilteredUsers(res.data.items);
+              console.log (res.data.items)
+        })
+        .catch((err) => console.log(err));
     } else {
       setFilteredUsers([]);
     }
@@ -35,7 +36,7 @@ const SearchProvider = ({ children }) => {
         setSearchInputs,
         filteredUsers,
         setFilteredUsers,
-        handleSearch,
+        handleSearch
       }}
     >
       {children}
@@ -44,14 +45,3 @@ const SearchProvider = ({ children }) => {
 };
 
 export { SearchContext, SearchProvider };
-
- //show filterd users from the handlesearch
-  // useEffect(() => {
-  //   if (searchInputs && searchInputs.length > 1) {
-  //     setUserDetails(setFilteredUsers);
-  //   } else {
-  //     setUserDetails(filteredUsers);
-  //   }
-  // }, [setFilteredUsers, searchInputs, filteredUsers]);
-  // const { searchInputs, setFilteredUsers, filteredUsers } = useContext(SearchContext);
-  //import { SearchContext } from "../../context/context";

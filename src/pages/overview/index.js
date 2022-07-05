@@ -21,16 +21,14 @@ const Index = () => {
     <>
       {userRepos &&
         userRepos.map((userRepo) => (
-          <div className="card--wrapper">
-            <div className="card" key={userRepo.id}>
+          <div className="card--wrapper" key={userRepo.id}>
+            <div className="card">
               <div className="repo--name">
                 <RepoIcon />
                 <span>{userRepo.name}</span>
               </div>
               <div className="repo--details">
-                <a href={userRepo.html_url}>
-                  {userRepo?.description}
-                </a>
+                <a href={userRepo.html_url}>{userRepo?.description}</a>
               </div>
               <div className="repo--footer">
                 <p>{userRepo?.language}</p>

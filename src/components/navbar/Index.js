@@ -18,17 +18,18 @@ const Index = () => {
   //     setSearchInputs([]);
   //   }
   // };
+  
 
   const handleChange = (e) => {
     const value = e.target.value;
     handleSearch(value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { search } = e.target.elements;
-    handleSearch(search.value.toLowerCase());
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const { search } = e.target.elements;
+  //   handleSearch(search.value.toLowerCase());
+  // };
 
   return (
     <nav>
@@ -37,9 +38,9 @@ const Index = () => {
           <img src={logo} alt="logo" />
         </Link>
       </div>
-      <form className="nav--searchInput" onSubmit={handleSubmit}>
+      <form className="nav--searchInput" >
         <input type="text" name="search" onChange={handleChange} />
-        <button className="search--button">Search</button>
+        {/* <button className="search--button">Search</button> */}
       </form>
     </nav>
   );

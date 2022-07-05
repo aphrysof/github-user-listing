@@ -6,25 +6,45 @@ import axios from "axios";
 import { SearchContext } from "../../context/context";
 
 const Index = () => {
-  const { searchInputs, setFilteredUsers } = useContext(SearchContext);
-  //setting state for the user
+  const { searchInputs, setSearchInputs, setFilteredUsers, filteredUsers } = useContext(SearchContext);
+  //setting state for the users
   const [userDetails, setUserDetails] = useState([]);
 
+;
   //fetching users
   useEffect(() => {
-    axios.get(`https://api.github.com/users`).then((res) => {
-      setUserDetails(res.data);
-    });
-  }, []);
+    axios
+      .get(`https://api.github.com/users`)
+      .then((res) => {
+        setUserDetails(res.data);
+        setFilteredUsers(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [setFilteredUsers]);
 
-  //show filterd users from the handlesearch
+  // show filterd users from the handlesearch
+  useEffect(
+    (searchInputs) => {
+      if (searchInputs && searchInputs.length > 1) {
+        setUserDetails(setSearchInputs);
+      
+      } else {
+        setUserDetails(filteredUsers);
+      }
+    },
+    [searchInputs, setSearchInputs, filteredUsers, setFilteredUsers]
+  );
+
   // useEffect(() => {
-  //   if (searchInputs && searchInputs.length > 2) {
-  //     setUserDetails(setFilteredUsers);
+  //   if (searchInputs && searchInputs.length > 1) {
+  //     setUserDetails(setSearchInputs);
+  //     console.log(setUserDetails)
   //   } else {
-  //     setUserDetails([]);
+  //     setUserDetails(filteredUsers);
   //   }
-  // }, [setFilteredUsers, searchInputs]);
+  // }, [setSearchInputs, searchInputs, filteredUsers]);
 
   const navigate = useNavigate();
 
