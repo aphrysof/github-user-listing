@@ -1,25 +1,35 @@
-import React,  {useState} from "react";
+import React, { useContext } from "react";
 import "./navbar.css";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
+import { SearchContext } from "../../context/context";
 
 const Index = () => {
+  const {  handleSearch } = useContext(SearchContext);
 
-  const [userInput, setUserInput] = useState("");
+  // const handleSearch = (value) => {
+  //   if (value && value.length > 2) {
+  //     axios
+  //       .get(`https://api.github.com/search/users?q=${value}`)
+  //       .then((res) => {
+  //         setSearchInputs(res.data.items);
+  //       });
+  //   } else {
+  //     setSearchInputs([]);
+  //   }
+  // };
 
   const handleChange = (e) => {
-      setUserInput(e.target.value);
-  }
+    const value = e.target.value;
+    handleSearch(value);
+  };
 
-  const handleSubmit =(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`https://api.github.com/users/${userInput}`)
-    .then((res) => 
-      res.json()
-    ).then ((data) => {
-      console.log(data)
-    })
-  }
+    const { search } = e.target.elements;
+    handleSearch(search.value.toLowerCase());
+  };
+
   return (
     <nav>
       <div>
@@ -27,7 +37,7 @@ const Index = () => {
           <img src={logo} alt="logo" />
         </Link>
       </div>
-      <form className="nav--searchInput" onSubmit = {handleSubmit}>
+      <form className="nav--searchInput" onSubmit={handleSubmit}>
         <input type="text" name="search" onChange={handleChange} />
         <button className="search--button">Search</button>
       </form>

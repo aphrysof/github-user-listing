@@ -1,25 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 import "./home.css";
 import ReactPaginate from "react-paginate";
+import axios from "axios";
+import { SearchContext } from "../../context/context";
 
 const Index = () => {
+  const { searchInputs, setFilteredUsers } = useContext(SearchContext);
   //setting state for the user
   const [userDetails, setUserDetails] = useState([]);
 
-  //fetching user details from the api
-  const fetchUserDetails = async () => {
-    const res = await fetch(`https://api.github.com/users`);
-    const data = await res.json();
-    console.log(data);
-    setUserDetails(data);
-  };
-
-  //useFffect to only render the call one
-
+  //fetching users
   useEffect(() => {
-    fetchUserDetails();
+    axios.get(`https://api.github.com/users`).then((res) => {
+      setUserDetails(res.data);
+    });
   }, []);
+
+  //show filterd users from the handlesearch
+  // useEffect(() => {
+  //   if (searchInputs && searchInputs.length > 2) {
+  //     setUserDetails(setFilteredUsers);
+  //   } else {
+  //     setUserDetails([]);
+  //   }
+  // }, [setFilteredUsers, searchInputs]);
 
   const navigate = useNavigate();
 
@@ -41,7 +46,7 @@ const Index = () => {
       <div className="card--container" key={userDetail.id}>
         <div
           className="card--details"
-          onClick={() => navigate(`/profile/${userDetail.id}`)}
+          onClick={() => navigate(`/profile/${userDetail.login}`)}
         >
           <div className="avatar--section">
             <div className="user--image">

@@ -7,6 +7,7 @@ import {
 } from "@primer/octicons-react";
 import { useParams, Outlet } from "react-router-dom";
 import { BottomNav } from "../../components";
+import axios from "axios";
 
 const Index = () => {
   // useParams always returns an object
@@ -14,13 +15,19 @@ const Index = () => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    const fetchUserByUsername = async () => {
-      const res = await fetch(`https://api.github.com/users/${login}`);
-      const data = await res.json();
-      setUser(data);
-    };
-    fetchUserByUsername();
+    axios.get(`https://api.github.com/users/${login}`).then((res) => {
+      setUser(res.data);
+    });
   }, [login]);
+
+  // useEffect(() => {
+  //   const fetchUserByUsername = async () => {
+  //     const res = await fetch(`https://api.github.com/users/${username}`);
+  //     const data = await res.json();
+  //     setUser(data);
+  //   };
+  //   fetchUserByUsername();
+  // }, [username]);
   return (
     <section>
       <BottomNav />
