@@ -26,15 +26,14 @@ const Index = () => {
 
   // show filterd users from the handlesearch
   useEffect(
-    (searchInputs) => {
+    () => {
       if (searchInputs && searchInputs.length > 1) {
         setUserDetails(setSearchInputs);
-      
       } else {
         setUserDetails(filteredUsers);
       }
     },
-    [searchInputs, setSearchInputs, filteredUsers, setFilteredUsers]
+    [searchInputs, setSearchInputs, filteredUsers]
   );
 
   // useEffect(() => {
