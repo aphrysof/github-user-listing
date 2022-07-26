@@ -29,3 +29,14 @@ nav {
   color: white;
   margin-left: 10px;
 }
+
+@media (max-width: 768px) { 
+  nav{
+    max-width: 100%;
+     background: #24292f;
+
+  }
+ .nav--searchInput input {
+   width: 100%;
+ }
+ }

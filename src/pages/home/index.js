@@ -6,11 +6,11 @@ import axios from "axios";
 import { SearchContext } from "../../context/context";
 
 const Index = () => {
-  const { searchInputs, setSearchInputs, setFilteredUsers, filteredUsers } = useContext(SearchContext);
+  const { searchInputs, setSearchInputs, setFilteredUsers, filteredUsers } =
+    useContext(SearchContext);
   //setting state for the users
   const [userDetails, setUserDetails] = useState([]);
 
-;
   //fetching users
   useEffect(() => {
     axios
@@ -25,25 +25,16 @@ const Index = () => {
   }, [setFilteredUsers]);
 
   // show filterd users from the handlesearch
-  useEffect(
-    () => {
-      if (searchInputs && searchInputs.length > 1) {
-        setUserDetails(setSearchInputs);
-      } else {
-        setUserDetails(filteredUsers);
-      }
-    },
-    [searchInputs, setSearchInputs, filteredUsers]
-  );
+  useEffect(() => {
+    if (searchInputs && searchInputs.length > 1) {
+      setUserDetails(setSearchInputs);
+      console.log(setSearchInputs)
+    } else {
+      setUserDetails(filteredUsers);
+  
+    }
+  }, [searchInputs, setSearchInputs, filteredUsers]);
 
-  // useEffect(() => {
-  //   if (searchInputs && searchInputs.length > 1) {
-  //     setUserDetails(setSearchInputs);
-  //     console.log(setUserDetails)
-  //   } else {
-  //     setUserDetails(filteredUsers);
-  //   }
-  // }, [setSearchInputs, searchInputs, filteredUsers]);
 
   const navigate = useNavigate();
 
@@ -91,9 +82,9 @@ const Index = () => {
   //changePage function
   //reactpaginate has a selected object which represent the number of the page
   //we want to move to.. so we are gonna destructure it
-  const changePage = ({ selected }) => {
+  function changePage({ selected }) {
     setPageNumber(selected);
-  };
+  }
 
   return (
     <div className="container">

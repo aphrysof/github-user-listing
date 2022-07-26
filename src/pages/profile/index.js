@@ -5,7 +5,7 @@ import {
   LocationIcon,
   OrganizationIcon,
 } from "@primer/octicons-react";
-import { useParams, Outlet } from "react-router-dom";
+import { useParams, Outlet} from "react-router-dom";
 import { BottomNav } from "../../components";
 import axios from "axios";
 

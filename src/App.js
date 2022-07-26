@@ -5,13 +5,7 @@ import { Navbar } from "./components";
 import {SearchProvider} from './context/context'
 
 function App() {
-  // const [searchResult, setSearchResult] = useState([])
-
-  // useEffect(() => {
-  //   console.log(searchResult)
-  // },[searchResult])
-  //setSearchResult={setSearchResult}
-  //searchResult={searchResult}
+  
   return (
     <>
       <SearchProvider>

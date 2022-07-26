@@ -6,18 +6,6 @@ import { SearchContext } from "../../context/context";
 
 const Index = () => {
   const {  handleSearch } = useContext(SearchContext);
-
-  // const handleSearch = (value) => {
-  //   if (value && value.length > 2) {
-  //     axios
-  //       .get(`https://api.github.com/search/users?q=${value}`)
-  //       .then((res) => {
-  //         setSearchInputs(res.data.items);
-  //       });
-  //   } else {
-  //     setSearchInputs([]);
-  //   }
-  // };
   
 
   const handleChange = (e) => {
@@ -25,15 +13,10 @@ const Index = () => {
     handleSearch(value);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const { search } = e.target.elements;
-  //   handleSearch(search.value.toLowerCase());
-  // };
 
   return (
     <nav>
-      <div>
+      <div className = "logo">
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>

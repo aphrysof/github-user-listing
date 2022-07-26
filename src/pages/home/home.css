@@ -1,6 +1,7 @@
 .container {
   max-width: 100%;
   display: grid;
+  grid-template-rows: repeat(1fr);
 }
 .card--container {
   max-width: 800px;
@@ -59,4 +60,14 @@
 .paginationActive a {
   color: white;
   background-color: #0969da;
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: grid;
+
+  }
+  .card--container{
+    margin: 10px 10px;
+  }
 }
